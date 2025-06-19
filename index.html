@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Persigue tus sueños 🚀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(#000015, #000);
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .nave {
+      position: absolute;
+      width: 180px;
+      top: 40%;
+      left: -200px;
+      animation: volar 12s linear infinite;
+    }
+
+    @keyframes volar {
+      0% { left: -250px; top: 45%; transform: rotate(5deg); }
+      50% { top: 35%; transform: rotate(-3deg); }
+      100% { left: 110%; top: 40%; transform: rotate(0deg); }
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: flotar 6s ease-in infinite;
+    }
+
+    .corazon::before, .corazon::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+
+    .mensaje {
+      position: relative;
+      z-index: 10;
+      perspective: 400px;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .crawl {
+      font-size: 24px;
+      color: white;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      transform: rotateX(25deg);
+      animation: scroll 60s linear infinite;
+      line-height: 2;
+    }
+
+    @keyframes scroll {
+      0% { transform: rotateX(25deg) translateY(100%); }
+      100% { transform: rotateX(25deg) translateY(-500%); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Audio de fondo -->
+  <audio autoplay loop>
+    <source src="stars.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <!-- Imagen de nave -->
+  <img src="dath.png" alt="nave star wars" class="nave">
+
+  <!-- Mensaje estilo Star Wars -->
+  <div class="mensaje">
+    <div class="crawl">
+      <p>Mi piloto, ing y líder favorito </p>
+      <p>Aunque el trabajo esté pesado, aunque a veces todo canse...<br>
+      tú naciste para volar, y volarás alto ✈️<br>
+      Eres increíble y estás muy cerquita de tu sueño amorcito,<br>
+      Te amo y siempre voy a estar aquí, animándote como tu fan #1 💗</p>
+      <p><strong>Persigue tus sueños, ya casi mi amor, que la fuerza te acompañe! </strong></p>
+    </div>
+  </div>
+
+  <!-- Corazones flotantes -->
+  <script>
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.top = '100vh';
+      document.body.appendChild(corazon);
+      setTimeout(() => {
+        corazon.remove();
+      }, 6000);
+    }
+    setInterval(crearCorazon, 300);
+  </script>
+</body>
+</html>
